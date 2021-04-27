@@ -1,11 +1,11 @@
 import React from "react";
 import './App.css'
 import Circle from "./components/Circle.jsx"
-//import Winner from "./assets/pic/Winner.gif"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DisplayPlayer1 from './components/Play/DisplayPlayer1'
 import DisplayPlayer2 from './components/Play/DisplayPlayer2'
 import Container from './components/container/Container.jsx'
+import NumeroDee from './components/dee/NumeroDee.jsx'
 
 
 class App extends React.Component {
@@ -147,19 +147,10 @@ class App extends React.Component {
 
                 <div className="flex grid-item-5">
                   {/* remonter de donner */}
-                  
+
                   <Container player1Tokens={this.state.player1Tokens} player2Tokens={this.state.player2Tokens}/>
                   
-                  <div className="numeroDee">
-
-
-                    <span className="spanP1">{this.state.numDee}</span>
-                    <i className="fas fa-chess-knight logo "></i>
-
-                    <span className="spanP2">{this.state.numDee2}</span>
-                    <p className="rainbow">Petit Chevaux</p>
-                    <button className={this.state.currentPlayer === 1 ? "b1" : "b2"} onClick={this.lancerDee}>Tirer dée du jouer {this.state.currentPlayer}</button>
-                  </div>
+                  <NumeroDee numDee= {this.state.numDee} numDee2={this.state.numDee2} currentPlayer={this.state.currentPlayer} lancerDee={this.lancerDee}/>
 
                 </div>
 
