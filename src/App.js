@@ -14,8 +14,9 @@ class App extends React.Component {
 
     this.state = {
 
-      numDee: 0,
-      numCase: 0,
+
+      numDee:[0,0],
+      numCase:[0,0],
       // numDeeC2: 0,
       // numCase2: 0,
       player1Tokens: [false, false, false, false],
@@ -29,19 +30,19 @@ class App extends React.Component {
   }
 
 
+// fonction qui permet de lancer le dee de facon aleatoire 
 
   lancerDee() {
     const dee = Math.floor(Math.random() * 6 + 1)
     console.log("numDEE :", dee);
-
     const player = this.state.currentPlayer
 
     if (player === 1) {
 
-      if (this.state.numDeeC !== 0 || dee === 6) {
+      if (this.state.numDee !== 0 || dee === 6) {
         this.setState({
           numDee: dee,
-          numCase: this.state.numDee + dee,
+          numCase: this.state.numDee + dee + 1,
           currentPlayer: 2
         })
       } else {
@@ -70,6 +71,7 @@ class App extends React.Component {
     }
   }
 
+  //fonction qui permet d'afficher les cercle dans le jeux ou les joueur se deplace 
   renderCircles(n, p) {
     let circlesArray = []
 
@@ -113,6 +115,8 @@ class App extends React.Component {
 
     return circlesArray
   }
+
+  // fonction avec une condtion pour savoir qui a gagner 
 
   renderVictory() {
     if (this.state.player1Tokens.indexOf(false) === -1) {
