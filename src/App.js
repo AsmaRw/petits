@@ -16,8 +16,8 @@ class App extends React.Component {
 
       numDee: 0,
       numCase: 0,
-      numDee2: 0,
-      numCase2: 0,
+      // numDeeC2: 0,
+      // numCase2: 0,
       player1Tokens: [false, false, false, false],
       player2Tokens: [false, false, false, false],
       currentPlayer: 1
@@ -38,10 +38,10 @@ class App extends React.Component {
 
     if (player === 1) {
 
-      if (this.state.numCase !== 0 || dee === 6) {
+      if (this.state.numDeeC !== 0 || dee === 6) {
         this.setState({
           numDee: dee,
-          numCase: this.state.numCase + dee,
+          numCase: this.state.numDee + dee,
           currentPlayer: 2
         })
       } else {
@@ -54,15 +54,15 @@ class App extends React.Component {
 
     } else if (player === 2) {
 
-      if (this.state.numCase2 !== 0 || dee === 6) {
+      if (this.state.numDeeC2 !== 0 || dee === 6) {
         this.setState({
-          numDee2: dee,
-          numCase2: this.state.numCase2 + dee,
+          numDee: dee,
+          numCase: this.state.numCase + dee,
           currentPlayer: 1
         })
       } else {
         this.setState({
-          numDee2: dee,
+          numDee: dee,
           currentPlayer: 1
         })
       }
@@ -76,7 +76,7 @@ class App extends React.Component {
     for (let index = n; index <= p; index++) {
 
 
-      if (this.state.numCase2 === index) {
+      if (this.state.numCase === index) {
         circlesArray.push(<Circle key={index} circleColor="#ec4444" />)
       } else if (this.state.numCase === index) {
         circlesArray.push(<Circle key={index} circleColor="#4480ec" />)
@@ -95,14 +95,14 @@ class App extends React.Component {
           numCase: 1,
           player1Tokens: arrayTokens
         })
-      } else if (this.state.numCase2 > 37) {
+      } else if (this.state.numCase > 37) {
         const arrayTokens2 = [...this.state.player2Tokens]
         const indexSecondFalse = arrayTokens2.indexOf(false)
 
         arrayTokens2[indexSecondFalse] = true
 
         this.setState({
-          numCase2: 1,
+          numCase: 1,
           player2Tokens: arrayTokens2
 
         })
@@ -150,7 +150,7 @@ class App extends React.Component {
 
                   <Container player1Tokens={this.state.player1Tokens} player2Tokens={this.state.player2Tokens}/>
                   
-                  <NumeroDee numDee= {this.state.numDee} numDee2={this.state.numDee2} currentPlayer={this.state.currentPlayer} lancerDee={this.lancerDee}/>
+                  <NumeroDee numDee= {this.state.numDee} currentPlayer={this.state.currentPlayer} lancerDee={this.lancerDee}/>
 
                 </div>
 
