@@ -5,6 +5,7 @@ import Circle from "./components/Circle.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import DisplayPlayer1 from './components/Play/DisplayPlayer1'
 import DisplayPlayer2 from './components/Play/DisplayPlayer2'
+import Container from './components/container/Container.jsx'
 
 
 class App extends React.Component {
@@ -116,12 +117,12 @@ class App extends React.Component {
   renderVictory() {
     if (this.state.player1Tokens.indexOf(false) === -1) {
       return (
-        <DisplayPlayer1/>
-        )
-      } else if (this.state.player2Tokens.indexOf(false) === -1) {
-        return (
-          <DisplayPlayer2/>
-        )
+        <DisplayPlayer1 />
+      )
+    } else if (this.state.player2Tokens.indexOf(false) === -1) {
+      return (
+        <DisplayPlayer2 />
+      )
 
     } else {
       return (
@@ -145,34 +146,10 @@ class App extends React.Component {
                 </div>
 
                 <div className="flex grid-item-5">
-                  <div className="containerP1">
-                    <div className="divchildP1">
-                      <div >
-                        <Circle circleColor={this.state.player1Tokens[0] ? "#4646e8" : "black"} />
-                        <Circle circleColor={this.state.player1Tokens[1] ? "#4646e8" : "black"} />
-                      </div>
-
-                      <div >
-                        <Circle circleColor={this.state.player1Tokens[2] ? "#4646e8" : "black"} />
-                        <Circle circleColor={this.state.player1Tokens[3] ? "#4646e8" : "black"} />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="containerP2">
-                    <div className="divchildP2">
-                      <div >
-                        <Circle circleColor={this.state.player2Tokens[0] ? "#c30c0c" : "black"} />
-                        <Circle circleColor={this.state.player2Tokens[1] ? "#c30c0c" : "black"} />
-                      </div>
-
-                      <div >
-                        <Circle circleColor={this.state.player2Tokens[2] ? "#c30c0c" : "black"} />
-                        <Circle circleColor={this.state.player2Tokens[3] ? "#c30c0c" : "black"} />
-                      </div>
-                    </div>
-                  </div>
-
+                  {/* remonter de donner */}
+                  
+                  <Container player1Tokens={this.state.player1Tokens} player2Tokens={this.state.player2Tokens}/>
+                  
                   <div className="numeroDee">
 
 
